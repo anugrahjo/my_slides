@@ -1,0 +1,7 @@
+\beamer@sectionintoc {2}{Existing Architectures}{3}{0}{1}
+\beamer@subsectionintoc {2}{1}{Reduced space method}{4}{0}{1}
+\beamer@subsectionintoc {2}{2}{Full space method}{5}{0}{1}
+\beamer@sectionintoc {3}{Hybrid}{6}{0}{2}
+\beamer@subsectionintoc {3}{1}{Example}{7}{0}{2}
+\beamer@sectionintoc {4}{Code}{9}{0}{3}
+\beamer@subsectionintoc {4}{1}{Example}{10}{0}{3}

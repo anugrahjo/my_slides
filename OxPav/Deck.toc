@@ -1,7 +1,10 @@
-\beamer@sectionintoc {2}{Existing Architectures}{3}{0}{1}
-\beamer@subsectionintoc {2}{1}{Reduced space method}{4}{0}{1}
-\beamer@subsectionintoc {2}{2}{Full space method}{5}{0}{1}
-\beamer@sectionintoc {3}{Hybrid}{6}{0}{2}
-\beamer@subsectionintoc {3}{1}{Example}{7}{0}{2}
-\beamer@sectionintoc {4}{Code}{9}{0}{3}
-\beamer@subsectionintoc {4}{1}{Example}{10}{0}{3}
+\beamer@sectionintoc {2}{Motivation}{3}{0}{1}
+\beamer@subsectionintoc {2}{1}{State-of-the-art in LSDO}{4}{0}{1}
+\beamer@subsectionintoc {2}{2}{State-of-the-art in LSDO: Challenges}{5}{0}{1}
+\beamer@sectionintoc {3}{Optimization Formulations}{6}{0}{2}
+\beamer@subsectionintoc {3}{1}{Reduced-space method}{7}{0}{2}
+\beamer@subsectionintoc {3}{2}{Full-space method}{10}{0}{2}
+\beamer@sectionintoc {4}{SURF - Strong Unification of Reduced-space and Full-space methods}{14}{0}{3}
+\beamer@subsectionintoc {4}{1}{SURF: Algorithm}{17}{0}{3}
+\beamer@subsectionintoc {4}{2}{SURF: FEA problem}{19}{0}{3}
+\beamer@sectionintoc {5}{Future work}{21}{0}{4}

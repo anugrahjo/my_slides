@@ -46,10 +46,10 @@
     \coordinate (West) at (0,0.5);
     \coordinate (East) at (\textwidth,0.5);
 
-    \draw[oxfordblue, thick] (West) -- (East);
+    % \draw[oxfordblue, thick] (West) -- (East);
     
     % \node [inner sep=0pt,clip,rounded corners=0.1cm] (oxlogo) at (0.85\textwidth,0.5) {\includegraphics[width=.16\textwidth]{Theme/Logos/OxfordLogov3.jpg}};
-    \node [inner sep=0pt,clip] (oxlogo) at (0.85\textwidth,0.5) {\includegraphics[width=.16\textwidth]{Theme/Logos/jsoe.jpg}};
+    \node [inner sep=0pt,clip] (oxlogo) at (0.9\textwidth,0.5) {\includegraphics[width=.16\textwidth]{Theme/Logos/jsoe.jpg}};
 
 
 \end{tikzpicture}}
@@ -65,13 +65,13 @@
     
     \begin{tikzpicture}[remember picture,overlay]
     
-    \coordinate (LeftEnd) at (-1, 0.5);
-    \coordinate (LeftEndUnder) at (-1, 0.1);
-    \coordinate (RightEnd) at (3,0.5);
+    \coordinate (LeftEnd) at (-1, 0.4);
+    \coordinate (LeftEndUnder) at (-1, 0);
+    \coordinate (RightEnd) at (3,0.4);
     \draw[oxfordblue, thick, fill=oxfordblue] (LeftEnd)--(RightEnd)--(LeftEndUnder) -- (LeftEnd);
 
-    \coordinate (RightEnd) at (\paperwidth, 0.1);
-    \coordinate (PreRightEnd) at (10, 0.1);
+    \coordinate (RightEnd) at (\paperwidth, 0.4);
+    \coordinate (PreRightEnd) at (10, 0.4);
     \draw[oxfordblue,thick] (RightEnd) -- (PreRightEnd);
     
     \end{tikzpicture}

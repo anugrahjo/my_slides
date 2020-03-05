@@ -1,8 +1,11 @@
 \BOOKMARK [2][]{Outline0.1}{Outline}{}% 1
-\BOOKMARK [2][]{Outline0.2}{Existing Architectures}{}% 2
-\BOOKMARK [3][]{Outline0.2.1.4}{Reduced space method}{Outline0.2}% 3
-\BOOKMARK [3][]{Outline0.2.2.5}{Full space method}{Outline0.2}% 4
-\BOOKMARK [2][]{Outline0.3}{Hybrid}{}% 5
-\BOOKMARK [3][]{Outline0.3.1.7}{Example}{Outline0.3}% 6
-\BOOKMARK [2][]{Outline0.4}{Code}{}% 7
-\BOOKMARK [3][]{Outline0.4.1.10}{Example}{Outline0.4}% 8
+\BOOKMARK [2][]{Outline0.2}{Motivation}{}% 2
+\BOOKMARK [3][]{Outline0.2.1.4}{State-of-the-art in LSDO}{Outline0.2}% 3
+\BOOKMARK [3][]{Outline0.2.2.5}{State-of-the-art in LSDO: Challenges}{Outline0.2}% 4
+\BOOKMARK [2][]{Outline0.3}{Optimization Formulations}{}% 5
+\BOOKMARK [3][]{Outline0.3.1.7}{Reduced-space method}{Outline0.3}% 6
+\BOOKMARK [3][]{Outline0.3.2.10}{Full-space method}{Outline0.3}% 7
+\BOOKMARK [2][]{Outline0.4}{SURF - Strong Unification of Reduced-space and Full-space methods}{}% 8
+\BOOKMARK [3][]{Outline0.4.1.17}{SURF: Algorithm}{Outline0.4}% 9
+\BOOKMARK [3][]{Outline0.4.2.19}{SURF: FEA problem}{Outline0.4}% 10
+\BOOKMARK [2][]{Outline0.5}{Future work}{}% 11

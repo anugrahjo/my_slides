@@ -1,0 +1,167 @@
+\begin{algorithm}[ht]
+    \small
+    % \caption{Preliminary results: the SURF optimization algorithm}
+    \caption{
+        SURF (strong unification of reduced-space and full-space) \\ 
+        \emph{SURF unifies reduced and full space for a simplified, equality-constrained optimization setting.}
+    }
+    \begin{algorithmic}[1]
+        \Loop
+            \State Assemble $A$, $b$, $\tilde M^{-1}$
+            \State Solve $\tilde M^{-1} A p = \tilde M^{-1} b$
+            \State Compute $\alpha$ via a line search
+            \State Update $
+                \begin{bmatrix}
+                    x_+ ,
+                    y_+ ,
+                    \psi_+ ,
+                    \lambda_+ 
+                \end{bmatrix}^T
+                =
+                \begin{bmatrix}
+                    x ,
+                    y ,
+                    \psi ,
+                    \lambda 
+                \end{bmatrix}^T
+                + \alpha p
+            $
+            \State Update $y$ and $\psi$ by inexactly solving $\R(x,y)=0$ and
+            % \State Update $y$ by inexactly solving $\R(x,y)=0$
+            % \State Update $\psi$ by inexactly solving 
+            % $\p \R / \p x ^ T \psi = -\p \F / \p y ^ T - \p \C / \p y ^ T \lambda$
+            $\R_y^T \psi = -\F_y^T - \C_y^T \lambda$
+            \State Update the approximation to the Hessian, ${d^2m/dx^2}$
+        \EndLoop
+    \end{algorithmic}
+
+    \emph{Note}: 
+    $p$ is the search direction and $\alpha$ is the step size,
+    $Ap=b$ is the FS KKT system,
+    and $M^{-1}$ and $\tilde M^{-1}$ are exact and approximate preconditioners for $A$ such that
+    $M = M_1 M_2 M_3 M_4$ and
+    % Schur-complement preconditioners for $A$:
+
+    \begin{equation} %\tag{9}
+        \setlength\arraycolsep{1pt}
+        A =
+        \begin{bmatrix}
+            m_{xx} & m_{xy} & \T{\R_x} & \T{\C_x} \\
+            m_{yx} & m_{yy} & \T{\R_y} & \T{\C_y} \\
+            \R_x & \R_y & 0 & 0 \\
+            \C_x & \C_y & 0 & 0 \\
+        \end{bmatrix}
+        ,
+        b =
+        \begin{bmatrix}
+            -m_x \\ 
+            -m_y \\ 
+            -\R(x,y) \\ 
+            -\C(x,y) \\
+        \end{bmatrix}
+        ,
+        M_1 =
+        \begin{bmatrix}
+            0 & 0 & \I & 0 \\
+            0 & \I & 0 & 0 \\
+            \I & 0 & 0 & 0 \\
+            0 & 0 & 0 & \I \\
+        \end{bmatrix}
+        ,
+        M_2 =
+        \begin{bmatrix}
+            \R_y & 0 & 0 & 0 \\
+            m_{yy} & \Tc{\R_y} & 0 & 0 \\
+            m_{xy} & \Tc{\R_x} & \I & 0 \\
+            \C_y & 0 & 0 & \I \\
+        \end{bmatrix}
+        % \label{eq:surf}
+    \end{equation}
+    
+    \begin{equation}
+        \setlength\arraycolsep{2pt}
+        M_3 =
+        \begin{bmatrix}
+            \I & 0 & \invc{\R_y} \R_x & 0 \\
+            0 & \I & \invTc{\R_y} m_{yx} - \invTc{\R_y} m_{yy} \invc{\R_y} \R_x & \invTc{\R_y} \Tc{\C_y} \\
+            0 & 0 & 
+            m_{xx} - m_{xy} \invc{\R_y} \R_x - \Tc{\R_x} \invTc{\R_y} m_{yx} + \Tc{\R_x} \invTc{\R_y} m_{yy} \invc{\R_y} \R_x
+            & \Tc{\C_x} - \Tc{\R_x} \invTc{\R_y} \Tc{\C_y} \\
+            0 & 0 & \C_x - \C_y \invc{\R_y} \R_x & 0 \\
+        \end{bmatrix}
+        ,
+        M_4 =
+        \begin{bmatrix}
+            0 & \I & 0 & 0 \\
+            0 & 0 & \I & 0 \\
+            \I & 0 & 0 & 0 \\
+            0 & 0 & 0 & \I \\
+        \end{bmatrix}
+        \nonumber
+    \end{equation}
+
+    % \begin{equation}
+    %     \setlength\arraycolsep{3pt}
+    %     A =
+    %     \begin{bmatrix}
+    %         m_{xx} & m_{xy} & \T{\R_x} & \T{\C_x} \\
+    %         m_{yx} & m_{yy} & \T{\R_y} & \T{\C_y} \\
+    %         \R_x & \R_y & 0 & 0 \\
+    %         \C_x & \C_y & 0 & 0 \\
+    %     \end{bmatrix}
+    %     % \qquad \text{and} \qquad
+    %     \; , \;
+    %     b =
+    %     \begin{bmatrix}
+    %         -m_x \\ 
+    %         -m_y \\ 
+    %         -\R(x,\Y(x)) \\ 
+    %         -\C(x,\Y(x)) \\
+    %     \end{bmatrix}
+    %     \; , \;
+    % %     \qquad \text{and}
+    % % \end{equation}
+    % % \begin{equation}
+    %     M =
+    %     \underbrace{
+    %         \begin{bmatrix}
+    %             0 & 0 & \Id & 0 \\
+    %             0 & \Id & 0 & 0 \\
+    %             \Id & 0 & 0 & 0 \\
+    %             0 & 0 & 0 & \Id \\
+    %         \end{bmatrix}
+    %     }_{M_1}
+    %     \underbrace{
+    %         \begin{bmatrix}
+    %             \Ry & 0 & 0 & 0 \\
+    %             \myy & \Tc{\Ry} & 0 & 0 \\
+    %             \mxy & \Tc{\Rx} & \Id & 0 \\
+    %             \Cy & 0 & 0 & \Id \\
+    %         \end{bmatrix}
+    %     }_{M_2}
+    %     \nonumber
+    % \end{equation}
+    % \begin{equation}
+    %     \setlength\arraycolsep{3pt}
+    %     \underbrace{
+    %         \begin{bmatrix}
+    %             \Id & 0 & \invc{\Ry} \Rx & 0 \\
+    %             0 & \Id & \invTc{\Ry} \myx - \invTc{\Ry} \myy \invc{\Ry} \Rx & \invTc{\Ry} \Tc{\Cy} \\
+    %             0 & 0 & 
+    %             \mxx - \mxy \invc{\Ry} \Rx - \Tc{\Rx} \invTc{\Ry} \myx + \Tc{\Rx} \invTc{\Ry} \myy \invc{\Ry} \Rx
+    %             & \Tc{\Cx} - \Tc{\Rx} \invTc{\Ry} \Tc{\Cy} \\
+    %             0 & 0 & \Cx - \Cy \invc{\Ry} \Rx & 0 \\
+    %         \end{bmatrix}
+    %     }_{M_3}
+    %     \underbrace{
+    %         \begin{bmatrix}
+    %             0 & 0 & 0 & \Id \\
+    %             \Id & 0 & 0 & 0 \\
+    %             0 & 0 & \Id & 0 \\
+    %             0 & \Id & 0 & 0 \\
+    %         \end{bmatrix}
+    %     }_{M_4}
+    %     \label{eq:surf}
+    % \end{equation}
+    % \label{alg:surf}
+\end{algorithm}
